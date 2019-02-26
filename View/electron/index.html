@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+	</head>
+	<body style="overflow: hidden; background-color: rgba(0,0,0,0); margin: 0; height:100vh;" >
+		<div id="App" style="height:100vh; display:flex; flexDirection:column;"></div>
+		<script>
+			window.jQuery = window.$ = require('jquery');
+		</script>
+		<!-- <script src="../node_modules/jquery/dist/jquery.js"></script> -->
+		<script src="../../../node_modules/popper.js/dist/umd/popper.js"></script>
+		<script src="../../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	</body>
+
+	<script type="text/jsx">
+		import React from 'react';
+		import ReactDOM from 'react-dom';
+		import {AppContainer} from 'react-hot-loader';
+		import { createStore } from 'redux'
+		import reducers from '../../reducers';
+
+		let store = createStore(reducers)
+
+		const render = () => {
+			const Root = require('./Root').default;
+			ReactDOM.render(<AppContainer><Root store={store}/></AppContainer>, document.getElementById('App'));
+		}
+
+		render();
+		if (module.hot) {
+			module.hot.accept(render);
+		}
+	</script>
+
+	<script>
+		function resetRootFontSize(){
+			var viewportWidth = window.innerWidth;
+			var additionalWidth = Math.max(viewportWidth - 320, 0);
+			var fontSize = 16 * (1 + Math.atan(additionalWidth / 3000));
+			fontSize = Math.round(fontSize * 10) / 10; // round to 1 decimal place
+			document.getElementsByTagName("html")[0].setAttribute("style", "font-size:" + fontSize + "px");
+		}
+		resetRootFontSize();
+	</script>
+
+</html>

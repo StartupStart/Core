@@ -1,0 +1,14 @@
+[
+	{
+		"code":"English",
+		"displayName":"English"
+	},
+	{
+		"code":"Chinese_Traditional",
+		"displayName":"繁體中文"
+	},
+	{
+		"code":"Chinese_Simplified",
+		"displayName":"简体中文"
+	}
+]
